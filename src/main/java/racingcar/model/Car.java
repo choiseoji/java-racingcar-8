@@ -23,7 +23,7 @@ public class Car {
         this.moveCount++;
     }
 
-    public void validateName(String name) {
+    private void validateName(String name) {
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("자동차 이름은 비어있을 수 없습니다.");
         }
