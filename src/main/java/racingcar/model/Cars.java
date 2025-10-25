@@ -17,6 +17,7 @@ public class Cars {
 
         String[] names = input.split(",");
         List<Car> cars = Arrays.stream(names)
+                .map(String::trim)
                 .map(Car::new)
                 .toList();
 
