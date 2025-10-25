@@ -9,4 +9,8 @@ public class Car {
         this.name = name;
         this.moveCount = 0;
     }
+
+    public Integer getMoveCount() {
+        return this.moveCount;
+    }
 }
