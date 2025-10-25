@@ -2,7 +2,7 @@ package racingcar.controller;
 
 import racingcar.dto.FinalResult;
 import racingcar.model.Cars;
-import racingcar.service.GameService;
+import racingcar.model.Game;
 import racingcar.view.Input;
 import racingcar.view.Output;
 
@@ -21,8 +21,8 @@ public class GameController {
         String round = input.readNumberOfRounds();
 
         Cars cars = Cars.from(names);
-        GameService gameService = new GameService(Integer.parseInt(round), cars);
-        FinalResult finalResult = gameService.play();
+        Game game = new Game(Integer.parseInt(round), cars);
+        FinalResult finalResult = game.play();
 
         output.printGameResult(finalResult);
     }

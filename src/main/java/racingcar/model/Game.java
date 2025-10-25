@@ -1,20 +1,18 @@
-package racingcar.service;
+package racingcar.model;
 
 import racingcar.dto.CarStatus;
 import racingcar.dto.FinalResult;
 import racingcar.dto.RoundResult;
-import racingcar.model.Car;
-import racingcar.model.Cars;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameService {
+public class Game {
 
     private Integer round;
     private Cars cars;
 
-    public GameService(Integer round, Cars cars) {
+    public Game(Integer round, Cars cars) {
         validateRound(round);
         this.round = round;
         this.cars = cars;
