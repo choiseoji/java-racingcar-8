@@ -11,6 +11,10 @@ public class Car {
         this.moveCount = 0;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
     public Integer getMoveCount() {
         return this.moveCount;
     }
