@@ -9,12 +9,12 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Game {
+public class GameService {
 
     private Integer round;
     private Cars cars;
 
-    public Game(Integer round, Cars cars) {
+    public GameService(Integer round, Cars cars) {
         validateRound(round);
         this.round = round;
         this.cars = cars;
