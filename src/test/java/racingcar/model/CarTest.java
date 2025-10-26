@@ -16,4 +16,15 @@ public class CarTest {
         assertThatThrownBy(() -> new Car(emptyName))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 자동차_이름이_6자_이상이면_예외_발생() {
+        // given
+        String longName = "helloo";
+
+        // when, then
+        assertThatThrownBy(() -> new Car(longName))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
