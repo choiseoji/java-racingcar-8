@@ -7,9 +7,9 @@ import java.util.stream.Collectors;
 
 public class Game {
 
+    private static final int MOVE_THRESHOLD = 4;
     private final Integer round;
     private final Cars cars;
-
     private List<List<Car>> roundHistory = new ArrayList<>();
 
     public Game(Integer round, Cars cars) {
@@ -34,7 +34,7 @@ public class Game {
     private void playOneRound() {
         for(Car car : this.cars.getCars()) {
             int randomNumber = Randoms.pickNumberInRange(0, 9);
-            if (randomNumber >= 4) {
+            if (randomNumber >= MOVE_THRESHOLD) {
                 car.increaseMoveCount();
             }
         }
