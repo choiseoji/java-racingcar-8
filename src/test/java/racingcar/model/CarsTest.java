@@ -37,4 +37,15 @@ public class CarsTest {
         assertThatThrownBy(() -> Cars.from(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("중복된 이름이 있으면 예외가 발생한다")
+    void givenDuplicateNames_thenThrowException() {
+        // given
+        String input = "Sally,Sally,Anne";
+
+        // when & then
+        assertThatThrownBy(() -> Cars.from(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
