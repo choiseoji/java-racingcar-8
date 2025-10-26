@@ -27,4 +27,15 @@ public class CarTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void 자동차가_전진하면_moveCount가_1_증가() {
+        // given
+        Car car = new Car("A");
+
+        // when
+        car.increaseMoveCount();
+
+        // then
+        assertThat(car.getMoveCount()).isEqualTo(1);
+    }
 }
