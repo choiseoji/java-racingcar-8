@@ -33,4 +33,18 @@ public class GameTest {
                 () -> new Game(0, cars)
         );
     }
+
+    @Test
+    @DisplayName("play 실행 후 라운드 히스토리가 round만큼 쌓인다")
+    void givenGame_whenPlay_thenRoundHistoryHasCorrectSize() {
+        // given
+        Cars cars = Cars.from("A,B");
+        Game game = new Game(5, cars);
+
+        // when
+        game.play();
+
+        // then
+        assertThat(game.getRoundHistory()).hasSize(5);
+    }
 }
