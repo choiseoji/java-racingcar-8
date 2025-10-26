@@ -9,6 +9,8 @@ import java.util.stream.Collectors;
 
 public class Output {
 
+    private static final String MOVE_MARK = "-";
+
     private void printResultHeader() {
         System.out.println("\n실행 결과");
     }
@@ -17,7 +19,7 @@ public class Output {
         for(CarStatus carStatus : roundResult.carStatuses()) {
             System.out.print(carStatus.name() + " : ");
             for(int i = 0; i < carStatus.moveCount(); i++) {
-                System.out.print("-");
+                System.out.print(MOVE_MARK);
             }
             System.out.println();
         }
