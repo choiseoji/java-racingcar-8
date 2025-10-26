@@ -11,10 +11,12 @@ public class GameController {
 
     private Input input;
     private Output output;
+    private ResultMapper resultMapper;
 
-    public GameController(Input input, Output output) {
+    public GameController(Input input, Output output, ResultMapper resultMapper) {
         this.input = input;
         this.output = output;
+        this.resultMapper = resultMapper;
     }
 
     public void run() {
@@ -25,8 +27,10 @@ public class GameController {
         Game game = new Game(Integer.parseInt(round), cars);
         game.play();
 
-        ResultMapper resultMapper = new ResultMapper();
-        FinalResult finalResult = resultMapper.toFinalResult(game.getRoundHistory(), game.getWinners());
+        FinalResult finalResult = resultMapper.toFinalResult(
+                game.getRoundHistory(),
+                game.getWinners()
+        );
         output.printGameResult(finalResult);
     }
 }
