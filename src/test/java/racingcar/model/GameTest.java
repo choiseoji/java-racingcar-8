@@ -20,4 +20,17 @@ public class GameTest {
         assertThat(game).isNotNull();
         assertThat(game.getRoundHistory()).isEmpty();
     }
+
+    @Test
+    @DisplayName("라운드 수가 0 이하이면 예외가 발생한다")
+    void givenNonPositiveRound_thenThrowsException() {
+        // given
+        Cars cars = Cars.from("A,B");
+
+        // when, then
+        org.junit.jupiter.api.Assertions.assertThrows(
+                IllegalArgumentException.class,
+                () -> new Game(0, cars)
+        );
+    }
 }
