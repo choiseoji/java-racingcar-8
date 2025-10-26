@@ -1,16 +1,16 @@
 package racingcar.model;
 
-import racingcar.dto.CarStatus;
-import racingcar.dto.FinalResult;
-import racingcar.dto.RoundResult;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Game {
 
     private Integer round;
     private Cars cars;
+
+    private List<List<Car>> roundHistory = new ArrayList<>();
 
     public Game(Integer round, Cars cars) {
         validateRound(round);
@@ -24,28 +24,45 @@ public class Game {
         }
     }
 
-    public FinalResult play() {
-        List<RoundResult> roundResults = new ArrayList<>();
-
+    public void play() {
         for (int i = 0; i < round; i++) {
-            RoundResult roundResult = playOneRound();
-            roundResults.add(roundResult);
+            playOneRound();
+            roundHistory.add(createSnapshot(cars));
         }
-        List<String> winnerNames = cars.getWinnerNames();
-
-        return new FinalResult(roundResults, winnerNames);
     }
 
-    private RoundResult playOneRound() {
-        List<CarStatus> carStatuses = new ArrayList<>();
-
+    private void playOneRound() {
         for(Car car : this.cars.getCars()) {
             int randomNumber = Randoms.pickNumberInRange(0, 9);
             if (randomNumber >= 4) {
                 car.increaseMoveCount();
             }
-            carStatuses.add(new CarStatus(car.getName(), car.getMoveCount()));
         }
-        return new RoundResult(carStatuses);
+    }
+
+    private List<Car> createSnapshot(Cars cars) {
+        return cars
+                .getCars()
+                .stream()
+                .map(car -> new Car(car.getName(), car.getMoveCount()))
+                .collect(Collectors.toList());
+    }
+
+    public List<List<Car>> getRoundHistory() {
+        return this.roundHistory;
+    }
+
+    public List<String> getWinners() {
+        int maxMoveCount = cars.getCars()
+                .stream()
+                .mapToInt(Car::getMoveCount)
+                .max()
+                .orElseThrow(() -> new IllegalStateException("우승자가 없습니다."));
+
+        return cars.getCars()
+                .stream()
+                .filter(car -> car.getMoveCount() == maxMoveCount)
+                .map(Car::getName)
+                .toList();
     }
 }
