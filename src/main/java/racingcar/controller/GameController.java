@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import racingcar.dto.FinalResult;
+import racingcar.mapper.ResultMapper;
 import racingcar.model.Cars;
 import racingcar.model.Game;
 import racingcar.view.Input;
@@ -22,8 +23,10 @@ public class GameController {
 
         Cars cars = Cars.from(names);
         Game game = new Game(Integer.parseInt(round), cars);
-        FinalResult finalResult = game.play();
+        game.play();
 
+        ResultMapper resultMapper = new ResultMapper();
+        FinalResult finalResult = resultMapper.toFinalResult(game.getRoundHistory(), game.getWinners());
         output.printGameResult(finalResult);
     }
 }
