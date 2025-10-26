@@ -7,8 +7,8 @@ import java.util.stream.Collectors;
 
 public class Game {
 
-    private Integer round;
-    private Cars cars;
+    private final Integer round;
+    private final Cars cars;
 
     private List<List<Car>> roundHistory = new ArrayList<>();
 

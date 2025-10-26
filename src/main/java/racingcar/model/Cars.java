@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Cars {
 
-    private List<Car> cars;
+    private final List<Car> cars;
 
     private Cars(List<Car> cars) {
         this.cars = List.copyOf(cars);

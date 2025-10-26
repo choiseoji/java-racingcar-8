@@ -9,9 +9,9 @@ import racingcar.view.Output;
 
 public class GameController {
 
-    private Input input;
-    private Output output;
-    private ResultMapper resultMapper;
+    private final Input input;
+    private final Output output;
+    private final ResultMapper resultMapper;
 
     public GameController(Input input, Output output, ResultMapper resultMapper) {
         this.input = input;
