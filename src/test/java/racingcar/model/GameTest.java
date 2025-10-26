@@ -3,6 +3,8 @@ package racingcar.model;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class GameTest {
@@ -47,4 +49,22 @@ public class GameTest {
         // then
         assertThat(game.getRoundHistory()).hasSize(5);
     }
+    @Test
+    @DisplayName("getWinners는 최대 이동거리 자동차 이름을 반환한다")
+    void givenGame_whenPlay_thenWinnersAreCorrect() {
+        // given
+        Cars cars = Cars.from("A,B,C");
+        Game game = new Game(1, cars);
+
+        for(int i = 0; i < cars.getCars().size() - 1; i++) {
+            cars.getCars().get(i).increaseMoveCount();
+        }
+
+        // when
+        List<String> winners = game.getWinners();
+
+        // then
+        assertThat(winners).containsExactlyInAnyOrder("A", "B");
+    }
+
 }
