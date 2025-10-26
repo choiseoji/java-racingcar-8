@@ -45,16 +45,4 @@ public class Cars {
     public List<Car> getCars() {
         return this.cars;
     }
-
-    public List<String> getWinnerNames() {
-        int maxMoveCount = cars.stream()
-                .mapToInt(Car::getMoveCount)
-                .max()
-                .orElseThrow(() -> new IllegalStateException("우승자가 없습니다."));
-
-        return cars.stream()
-                .filter(car -> car.getMoveCount() == maxMoveCount)
-                .map(Car::getName)
-                .toList();
-    }
 }
