@@ -14,9 +14,9 @@ public class Output {
     }
 
     private void printOneRoundResult(RoundResult roundResult) {
-        for(CarStatus carStatus : roundResult.getCarStatuses()) {
-            System.out.print(carStatus.getName() + " : ");
-            for(int i = 0; i < carStatus.getMoveCount(); i++) {
+        for(CarStatus carStatus : roundResult.carStatuses()) {
+            System.out.print(carStatus.name() + " : ");
+            for(int i = 0; i < carStatus.moveCount(); i++) {
                 System.out.print("-");
             }
             System.out.println();
@@ -40,7 +40,7 @@ public class Output {
     public void printGameResult(FinalResult finalResult) {
 
         printResultHeader();
-        printRoundResult(finalResult.getRoundResults());
-        printWinners(finalResult.getWinners());
+        printRoundResult(finalResult.roundResults());
+        printWinners(finalResult.winners());
     }
 }
