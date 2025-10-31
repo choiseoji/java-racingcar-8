@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ResultMapper {
 
-    public FinalResult toFinalResult(List<List<Car>> roundData, List<String> winners) {
+    public static FinalResult toFinalResult(List<List<Car>> roundData, List<String> winners) {
 
         List<RoundResult> roundResults = new ArrayList<>();
         for(List<Car> cars : roundData) {
@@ -19,7 +19,7 @@ public class ResultMapper {
         return new FinalResult(roundResults, winners);
     }
 
-    public RoundResult toRoundResult(List<Car> cars) {
+    public static RoundResult toRoundResult(List<Car> cars) {
 
         List<CarStatus> carStatuses = new ArrayList<>();
         for(Car car : cars) {
