@@ -42,7 +42,17 @@ public class Cars {
         }
     }
 
+    public void moveOneCar(int index) {
+
+        Car car = this.cars.get(index);
+        car.increaseMoveCount();
+    }
+
     public List<Car> getCars() {
         return this.cars;
+    }
+
+    public int getNumberOfCars() {
+        return this.cars.size();
     }
 }

@@ -32,10 +32,11 @@ public class Game {
     }
 
     private void playOneRound() {
-        for(Car car : this.cars.getCars()) {
+        int numberOfCars = cars.getNumberOfCars();
+        for(int index = 0; index < numberOfCars; index++) {
             int randomNumber = Randoms.pickNumberInRange(0, 9);
             if (randomNumber >= MOVE_THRESHOLD) {
-                car.increaseMoveCount();
+                cars.moveOneCar(index);
             }
         }
     }
