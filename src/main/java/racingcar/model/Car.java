@@ -6,12 +6,11 @@ public class Car {
     private Integer moveCount;
 
     public Car(String name) {
-        validateName(name);
-        this.name = name;
-        this.moveCount = 0;
+        this(name, 0);
     }
 
     public Car(String name, Integer moveCount) {
+        validateName(name);
         this.name = name;
         this.moveCount = moveCount;
     }
