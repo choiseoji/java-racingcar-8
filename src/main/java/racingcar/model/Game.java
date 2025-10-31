@@ -8,6 +8,8 @@ import java.util.stream.Collectors;
 public class Game {
 
     private static final int MOVE_THRESHOLD = 4;
+    private static final int RANDOM_MIN = 0;
+    private static final int RANDOM_MAX = 9;
     private final Integer round;
     private final Cars cars;
     private List<List<Car>> roundHistory = new ArrayList<>();
@@ -34,7 +36,7 @@ public class Game {
     private void playOneRound() {
         int numberOfCars = cars.getNumberOfCars();
         for(int index = 0; index < numberOfCars; index++) {
-            int randomNumber = Randoms.pickNumberInRange(0, 9);
+            int randomNumber = Randoms.pickNumberInRange(RANDOM_MIN, RANDOM_MAX);
             if (randomNumber >= MOVE_THRESHOLD) {
                 cars.moveOneCar(index);
             }
