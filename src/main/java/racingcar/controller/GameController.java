@@ -19,10 +19,11 @@ public class GameController {
 
     public void run() {
         String names = input.readCarNames();
-        String round = input.readNumberOfRounds();
-
         Cars cars = Cars.from(names);
+
+        String round = input.readNumberOfRounds();
         Game game = new Game(Integer.parseInt(round), cars);
+
         game.play();
 
         FinalResult finalResult = ResultMapper.toFinalResult(
